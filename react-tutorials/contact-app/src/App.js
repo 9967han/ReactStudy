@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PhoneForm from './components/PhoneForm';
+import PhoneInfoList from './components/PhoneInfoList';
 
 class App extends Component {
 
   id = 0;
 
   state = {
-    information: [],
-    
+    information: [], 
   }
 
   handleCreate = (data) => {
@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <div>
         <PhoneForm onCreate={this.handleCreate}/>
-        {JSON.stringify(this.state.information)}
+        <PhoneInfoList data={this.state.information}/>
       </div>
     );
   }
