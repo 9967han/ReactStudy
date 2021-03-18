@@ -10,6 +10,13 @@ class App extends Component {
     information: [], 
   }
 
+  handleRemove = (id) => {
+    const {information} = this.state;
+    this.setState({
+      information : information.filter(info => info.id !== id)
+    });
+  }
+
   handleCreate = (data) => {
     const {information} = this.state;
     this.setState({
@@ -23,7 +30,7 @@ class App extends Component {
     return (
       <div>
         <PhoneForm onCreate={this.handleCreate}/>
-        <PhoneInfoList data={this.state.information}/>
+        <PhoneInfoList data={this.state.information} onRemove={this.handleRemove}/>
       </div>
     );
   }
