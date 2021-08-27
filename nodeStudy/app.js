@@ -10,6 +10,7 @@ app.listen(3000, function(){
 app.use(express.static("public"))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.set('view engine', 'ejs')
 
 //url : / route to main.html
 app.get('/', function(req, res){
@@ -22,6 +23,6 @@ app.get('/main', function(req, res){
 });
 
 app.post('/email_post', function(req,res){
-    res.send("post respond");
-    console.log(req.body.email);
+    console.log("post respond");
+    res.render('email.ejs', {'email' : req.body.email}) // email 이라는 name 찾아 치환 후 client로 전달
 });
