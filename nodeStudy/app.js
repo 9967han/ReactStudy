@@ -23,6 +23,12 @@ app.get('/main', function(req, res){
 });
 
 app.post('/email_post', function(req,res){
-    console.log("post respond");
     res.render('email.ejs', {'email' : req.body.email}) // email 이라는 name 찾아 치환 후 client로 전달
+});
+
+app.post('/ajax_send_email', function(req, res){
+    console.log(req.body.email);
+    //check validation about input value ==> select db
+    var responseData = {'result' : 'ok', 'email' : req.body.email};
+    res.json(responseData);
 });
